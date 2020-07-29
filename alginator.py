@@ -6,13 +6,14 @@
     These are the steps for this script
 
     1) take in the input that defines the monomer organization
-        example: MMMGGMMGMGMGMMMM
+        example: 'MMMGGMMGMGMGMMMM'
+        for now, has to be even number of monomers
 
     2) Call the function that defines the header to the output.pdb
 
     3) Call the function that takes monomer (M/G) and spits out .pdb for it
         this depends on the location of the monomer
-        
+
     2) open .pdb file for writing output
 
     3) write headers of the .pdb file
@@ -23,12 +24,15 @@
         note that I do not need to write the partial charges
 """
 ## imports
+import sys
 import csv
 from csv import DictReader
 
+## Grabbing input
+polymer = sys.argv[1]
 
-# Defining output parameters
-output_name = "GRED.pdb"
+## Defining output parameters
+output_name = polymer + '.pdb'
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
 
@@ -53,7 +57,25 @@ resNum = 0
 new_move = [0,0,0]
 
 ## importing and reading structure csv file
+mon_pos = 1 #initializing position of monomer in the polymer
+for mon in polymer:
+    #beginning of polymer
+    if mon_pos == 1:
+        if mon == G:
+            structure = '../structures/GNRD.csv'
+        if mon == M:
+            structure = '../structures/MNRD.csv'
+    #end of polymer
+    elif mon_pos == len(polymer):
+        if mon == G:
+            structure = '../structures/GRED.csv'
+        if mon == M:
+            structure = '../structures/MRED.csv'
+    else:
+        if
+
 structure = './GRED.csv'
+
 with open(structure, 'r') as f:
     dict_reader = DictReader(f)
     resNum += 1
