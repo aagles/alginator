@@ -8,6 +8,11 @@
     1) take in the input that defines the monomer organization
         example: MMMGGMMGMGMGMMMM
 
+    2) Call the function that defines the header to the output.pdb
+
+    3) Call the function that takes monomer (M/G) and spits out .pdb for it
+        this depends on the location of the monomer
+        
     2) open .pdb file for writing output
 
     3) write headers of the .pdb file
