@@ -68,14 +68,22 @@ for mon in polymer:
     #end of polymer
     elif mon_pos == len(polymer):
         if mon == 'G':
-            structure = './structures/GRED.csv'
+            if mon_pos % 2 == 0:
+                structure = './structures/GRED_evn.csv'
+            else:
+                structure = './structures/GRED_odd.csv'
         if mon == 'M':
-            structure = './structures/MRED.csv'
+            if mon_pos % 2 == 0:
+                structure = './structures/MRED_evn.csv'
+            else:
+                structure = './structures/MRED_odd.csv'
+    #middle, even
     elif mon_pos % 2 == 0:
         if mon == 'G':
             structure = './structures/GEVN.csv'
         if mon == 'M':
             structure = './structures/MEVN.csv'
+    #middle, odd
     else:
         if mon == 'G':
             structure = './structures/GODD.csv'
