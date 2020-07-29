@@ -1,13 +1,5 @@
 ## This script will take the coordinates of alginate monomer units located in
-## ./structures.xlsx and convert them to .pdb format
-
-# import pandas as pd
-#
-# structures = pd.ExcelFile('./structures.xlsx') #this reads the .xlsx only once
-# GNRD = pd.read_excel(structures, 'GNRD', usecols=["atom name", 'x', 'y', 'z'])
-# defines the data on GNRD sheet
-#
-# while
+## ./structures.csv's, concatenate them, and convert the polymer to .pdb format
 
 
 """
@@ -31,7 +23,7 @@ from csv import DictReader
 
 
 # Defining output parameters
-output_name = "GRED.pdb" 
+output_name = "GRED.pdb"
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
 
