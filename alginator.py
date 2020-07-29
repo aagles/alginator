@@ -97,6 +97,9 @@ for mon in polymer:
             x = float('%.3f'%(float(row['x']) + move[0])) #have to convert to number before addition
             y = float('%.3f'%(float(row['y']) + move[1]))
             z = float('%.3f'%(float(row['z']) + move[2]))
+            # This step redefines the move for the next monomer
+            if atomName == 'O1':
+                new_move = [x, y, z]
             occupancy = '1.00'
             tempFact = '0.00'
             none = "" #for columns in pdb that will be empty
@@ -116,11 +119,6 @@ for mon in polymer:
             segID = none.ljust(4)
             elem = elem.rjust(2)
 
-            # This final step redefines the move for the next monomer
-            if atomName == 'O1':
-                new_move = [float(row['x']), float(row['y']), float(row['z'])]
-                #print(new_move)
-            #print(str(resNum).rjust(4))
 
             with open(output_name, 'a') as output: #a for append!
                 output.write("ATOM  " + str(atomNum).rjust(5) + none.rjust(2) + atomName.ljust(4) + altLoc + resName + " " + chainID + str(resNum).rjust(4) + code + none.rjust(3) + x + y + z + occupancy + tempFact + none.rjust(6) + segID + elem + '\n')
