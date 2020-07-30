@@ -31,8 +31,9 @@ from csv import DictReader
 ## Grabbing input
 polymer = sys.argv[1]
 
-## Defining output parameters
-output_name = './output/' + polymer + '.pdb' #where the output will be written
+## Defining output
+output_file = './' + polymer + '/'
+output_name = output_file + polymer + '.pdb' #where the output will be written
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
 
