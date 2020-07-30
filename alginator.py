@@ -25,6 +25,7 @@
 """
 ## imports
 import sys
+import os
 import csv
 from csv import DictReader
 
@@ -32,8 +33,14 @@ from csv import DictReader
 polymer = sys.argv[1]
 
 ## Defining output
-output_file = './' + polymer + '/'
-output_name = output_file + polymer + '.pdb' #where the output will be written
+output_dir = '../' + polymer + '/'
+try:
+    os.makedirs(output_dir)
+    print("Directory ", output_dir, " created")
+except FileExistsError:
+    print("Directory ", output_dir, " already exists")
+    
+output_name = output_dir + polymer + '.pdb' #where the output will be written
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
 
