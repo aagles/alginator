@@ -40,8 +40,8 @@ def inter(pair1,pair2,atoms,lastresNr,lastatom,array):
     "OR":4.756E-2,
     "OA":4.756E-2,
     "OE":4.756E-2,
-    "COO":.00489, #avery added 7/29/20 needs checked
-    "OOC":.00236 #same
+    "C":0.0023406244, #Avery, 8/3/20, taken from 56a6carbo_r ffnonbonded.itp
+    "OM":0.0022619536 #Avery, 8/3/20, taken from 56a6carbo_r ffnonbonded.itp
     }
     vW12 = {
     "H":0.,
@@ -56,8 +56,8 @@ def inter(pair1,pair2,atoms,lastresNr,lastatom,array):
     "OR":0.685E-3,
     "OA":1.125E-3,
     "OE":1.125E-3,
-    "COO":1.359E-5, #avery added 7/29/20
-    "OOC":1.59E-6 #added 7/29/20
+    "C":4.937284E-06,  #Avery, 8/3/20, taken from 56a6carbo_r ffnonbonded.itp
+    "OM":7.4149321e-07 #Avery, 8/3/20, taken from 56a6carbo_r ffnonbonded.itp
     }
 
     nvW6 = {
