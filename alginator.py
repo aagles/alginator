@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ## This script will take the coordinates of alginate monomer units located in
 ## ./structures.csv's, concatenate them, and convert the polymer to .pdb format
 
@@ -33,13 +35,13 @@ from csv import DictReader
 polymer = sys.argv[1]
 
 ## Defining output
-output_dir = '../' + polymer + '/'
+output_dir = polymer + '/'
 try:
     os.makedirs(output_dir)
     print("Directory ", output_dir, " created")
 except FileExistsError:
     print("Directory ", output_dir, " already exists")
-    
+
 output_name = output_dir + polymer + '.pdb' #where the output will be written
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
@@ -65,38 +67,39 @@ resNum = 0
 new_move = [0,0,0]
 
 ## importing and reading structure csv file
+path2structures = '/Users/averyagles/google/research/projects/gromacs/alginate/alginator/'
 mon_pos = 1 #initializing position of monomer in the polymer
 for mon in polymer:
     #beginning of polymer
     if mon_pos == 1:
         if mon == 'G':
-            structure = './structures/GNRD.csv'
+            structure = path2structures + 'structures/GNRD.csv'
         if mon == 'M':
-            structure = './structures/MNRD.csv'
+            structure = path2structures + 'structures/MNRD.csv'
     #end of polymer
     elif mon_pos == len(polymer):
         if mon == 'G':
             if mon_pos % 2 == 0:
-                structure = './structures/GRED_evn.csv'
+                structure = path2structures + 'structures/GRED_evn.csv'
             else:
-                structure = './structures/GRED_odd.csv'
+                structure = path2structures + 'structures/GRED_odd.csv'
         if mon == 'M':
             if mon_pos % 2 == 0:
-                structure = './structures/MRED_evn.csv'
+                structure = path2structures + 'structures/MRED_evn.csv'
             else:
-                structure = './structures/MRED_odd.csv'
+                structure = path2structures + 'structures/MRED_odd.csv'
     #middle, even
     elif mon_pos % 2 == 0:
         if mon == 'G':
-            structure = './structures/GEVN.csv'
+            structure = path2structures + 'structures/GEVN.csv'
         if mon == 'M':
-            structure = './structures/MEVN.csv'
+            structure = path2structures + 'structures/MEVN.csv'
     #middle, odd
     else:
         if mon == 'G':
-            structure = './structures/GODD.csv'
+            structure = path2structures + 'structures/GODD.csv'
         if mon == 'M':
-            structure = './structures/MODD.csv'
+            structure = path2structures + 'structures/MODD.csv'
 
     ## Grabbing info in structure and appending to .csv
     with open(structure, 'r') as f:
