@@ -38,11 +38,15 @@ polymer = sys.argv[1]
 output_dir = polymer + '/'
 try:
     os.makedirs(output_dir)
+    os.makedirs(output_dir + '00_setup/')
+    os.makedirs(output_dir + '01_min/')
+    os.makedirs(output_dir + '02_eqm/')
+    os.makedirs(output_dir + '03_prod/')
     print("Directory ", output_dir, " created")
 except FileExistsError:
     print("Directory ", output_dir, " already exists")
 
-output_name = output_dir + polymer + '.pdb' #where the output will be written
+output_name = output_dir + '00_setup/' + polymer + '.pdb' #where the output will be written
 output_header = "This is what goes at the top of the .pdb file"
 output_remark = "Add any remarks here"
 
