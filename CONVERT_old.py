@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python 
 
 import io
 import readline
@@ -153,14 +153,14 @@ def inter(pair1,pair2,atoms,lastresNr,lastatom,array):
     else:
 
 # 2. N interactions in ring - a1a2
-      if ( atom1_name+atom2_name in nvW6 and (at1resNr == at2resNr)  ):
+      if ( nvW6.has_key(atom1_name+atom2_name) and (at1resNr == at2resNr)  ):
         if (at2resNr == lastresNr and (atom1atom2 == 'O1C3' or atom1atom2 == 'O1C5' )):
           array.append('%+5s %+5s   1   %4e %4e; %4s %4s NRE' % (str(pair1),str(pair2),nvW6[atom1_name+atom2_name],(nvW12re[atom1_name+atom2_name]), str(atom1_name), str(atom2_name) ))
         else:
           array.append('%+5s %+5s   1   %4e %4e; %4s %4s N' % (str(pair1),str(pair2),nvW6[atom1_name+atom2_name],(nvW12[atom1_name+atom2_name]), str(atom1_name), str(atom2_name) ))
       else:
 # 3. N interactions in ring - a2a1
-       if ( atom2_name+atom1_name in nvW6 and at1resNr == at2resNr ):
+       if (nvW6.has_key(atom2_name+atom1_name) and at1resNr == at2resNr ):
         if (at2resNr == lastresNr and (atom2atom1 == 'O1C3' or atom2atom1 == 'O1C5' )):
             array.append('%+5s %+5s   1   %4e %4e; %4s %4s NRE' % (str(pair1),str(pair2),nvW6[atom2_name+atom1_name],(nvW12re[atom2_name+atom1_name]), str(atom2_name), str(atom1_name) ))
         else:
